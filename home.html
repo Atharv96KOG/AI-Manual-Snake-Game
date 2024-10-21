@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Mode - The Snake Game</title>
+    <style>
+        /* Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://mrwallpaper.com/images/high/thrilling-adventure-with-green-snake-game-character-bqvxt2p5oibadgqn.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex; /* Flexbox for centering */
+            flex-direction: column; /* Stack children vertically */
+            justify-content: center; /* Center vertically */
+            align-items: center; /* Center horizontally */
+            text-align: center; /* Center text */
+            position: relative; /* Allow overlay positioning */
+        }
+
+        
+        .title {
+            font-size: 4em; /* Increased font size for the main title */
+            margin-bottom: 10px; /* Reduced margin for better spacing */
+            color: #fff;
+            z-index: 2; /* Ensures the title is above the overlay */
+            animation: titleFadeIn 1s ease-out both;
+            position: relative;
+        }
+
+        @keyframes titleFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtitle {
+            color: #fff; 
+            margin-bottom: 50px; 
+            z-index: 2; 
+            position: relative;
+            font-size: 1.5em; /* Subtitle font size */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            animation: containerFadeIn 1.5s ease-out both;
+            z-index: 2; /* Ensures buttons are above the overlay */
+            position: relative; /* Ensure stacking context */
+        }
+
+        @keyframes containerFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .btn {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 50%);
+            transition: opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .btn {
+                width: 150px;
+                height: 150px;
+                font-size: 1.2em;
+            }
+
+            .title {
+                font-size: 3em; /* Adjust title size for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 120px;
+                height: 120px;
+                font-size: 1em;
+            }
+
+            .title {
+                font-size: 2.5em; /* Further adjust title size */
+            }
+
+            .subtitle {
+                font-size: 1.2em; /* Adjust subtitle size for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div> <!-- Overlay for the background -->
+    <h1 class="title">THE SNAKE GAME</h1> <!-- Main Title -->
+    <h2 class="subtitle">Select Mode</h2> <!-- Subtitle -->
+    <div class="container">
+        <button class="btn" onclick="window.location.href='index.html'">
+            <span>AI</span>
+        </button>
+        <button class="btn" onclick="window.location.href='manual.html'">
+            <span>Manual</span>
+        </button>
+    </div>
+</body>
+</html>
